@@ -20,14 +20,15 @@ app.post('/',(req,res)=>{
     let body = req.body 
 
     if(body.nombre === undefined){
-        persona = {
+       res.status(400).json(
+          {
             ok:false,
-            mensaje:'el nombre es requerido',
-            status :false
-        }.status(4000);
+            mensage:'el nombre es necesario'
+          }
+       )
     }
     
-    res.json(body).status(2000);
+    res.json(body).status(200);
 });
 app.put('/user/:id',(req,res)=>{
     let id = req.params.id
